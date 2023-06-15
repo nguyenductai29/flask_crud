@@ -2,16 +2,16 @@ import logging as LOG
 from logging.handlers import RotatingFileHandler
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
-from dotenv import load_dotenv
+from flask_migrate import Migrate
 
-from controllers import order, order_manager
-
-load_dotenv()
+from controllers import main
 
 app = Flask(__name__)
-app.config.from_pyfile('settings.py')    # Tải cấu hình từ tệp settings.py
+app.config.from_pyfile('./settings.py')    # Tải cấu hình từ tệp settings.py
 
 db = SQLAlchemy(app)
+
+migrate = Migrate(app, db, directory='migrations', command='db')
 
 # Tạo FileHandler và cấu hình encoding
 file_handler = RotatingFileHandler('example.log', encoding='utf-8', maxBytes=1000000, backupCount=3)
@@ -19,8 +19,7 @@ LOG.basicConfig(level=LOG.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(t
 LOG.info('Start')
 
 # Đăng ký blueprint của các controllers
-app.register_blueprint(order.bp)
-app.register_blueprint(order_manager.bp)
+app.register_blueprint(main.bp)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0', port='8080')
