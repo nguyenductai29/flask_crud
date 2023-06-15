@@ -1,0 +1,50 @@
+{% extends 'base/baselayout.html' %}
+
+{% block title %} Order screen {% endblock %}
+
+{% block content %}
+    <div class="d-grid gap-2 col-8 mx-auto mt-5">
+        <div class="row">
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-auto">
+                        <p class="m-0">Mã sản phẩm</p>
+                    </div>
+                    <div class="col">
+                        <select class="form-select">
+                            <option>1</option>
+                            <option>1</option>
+                            <option>1</option>
+                            <option>1</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-auto">
+                        <p class="m-0">Ngày nhập sản phẩm</p>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary" type="button">Search</button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 text-start">
+                <div class="col-2">
+                    <button class="btn btn-primary" type="button">Add</button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-12">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

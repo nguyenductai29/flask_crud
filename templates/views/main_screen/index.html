@@ -3,5 +3,30 @@
 {% block title %} Home screen {% endblock %}
 
 {% block content %}
+    <div class="row mt-5">
+        <div class="col-6">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="button" class="btn btn-primary btn-order">nhập hàng</button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="button" class="btn btn-primary btn-ispec-order">kiểm tra hàng đã nhập</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
+{% block script %}
+<script>
+    $(function() {
+        $('.content .btn-order').on('click', function(e) {
+            window.location.href = '/order'
+        })
+
+        $('.content .btn-ispec-order').on('click', function (e) {
+
+        })
+    })
+</script>
 {% endblock %}
