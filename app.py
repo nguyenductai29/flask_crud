@@ -12,7 +12,7 @@ app.config.from_pyfile('./settings.py')    # Tải cấu hình từ tệp settin
 db = SQLAlchemy(app)
 
 # TODO
-# migrate = Migrate(app, db, directory='migrations', command='db')
+migrate = Migrate(app, db, directory='migrations', command='db')
 
 # Tạo FileHandler và cấu hình encoding
 file_handler = RotatingFileHandler('example.log', encoding='utf-8', maxBytes=1000000, backupCount=3)
