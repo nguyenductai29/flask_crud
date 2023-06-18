@@ -1,0 +1,68 @@
+{% extends 'base/baselayout.html' %}
+
+{% block title %} Master Product screen {% endblock %}
+
+{% block content %}
+    <!-- <div class="row">
+        <div class="d-grid col-8 mx-auto mt-5">
+            <div class="row">
+                <div class="col-auto">
+                    <p class="m-0">tên sản phẩm</p>
+                </div>
+                <div class="col-4">
+                    <select class="form-select">
+                        {% for item in search_data %}
+                            <option value="{{ item.category_code }}">{{ item.product_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="row mt-3">
+        <div class="col-12 text-start">
+            <div class="col-2">
+                <button class="btn btn-primary" type="button">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <table class="table table-striped table-hover table-sticky">
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup></colgroup>
+                <colgroup style="width: 100px;"></colgroup>
+                <thead>
+                    <tr>
+                        <th>Mã sản phẩm</th>
+                        <th>tên sản phẩm</th>
+                        <th>loại sản phẩm</th>
+                        <th>giá</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody> {% for item in table_data %}
+                    <tr id="item_{{ item[0] }}">
+                        <td class="product-code">{{ item[0] }}</td>
+                        <td class="product-name">{{ item[1] }}</td>
+                        <td class="category-code">{{ item[2] }}</td>
+                        <td class="product-price">{{ item[3] }}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <i class="fas fa-trash-alt" style="font-size: 20px;"></i>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-edit" style="font-size: 20px;"></i>
+                                </div>
+                            </div>
+                        </td>
+                    </tr> {% endfor %} </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

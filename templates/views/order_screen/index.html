@@ -4,54 +4,10 @@
 
 {% block content %}
     <div class="d-grid col-12 mx-auto mt-5">
-        <div class="row">
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-auto">
-                        <p class="m-0">Mã sản phẩm</p>
-                    </div>
-                    <div class="col">
-                        <select class="form-select">
-                            <option>1</option>
-                            <option>1</option>
-                            <option>1</option>
-                            <option>1</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-auto">
-                        <p class="m-0">Ngày nhập sản phẩm</p>
-                    </div>
-                    <div class="col-4">
-                        <input type="date" class="form-control" lang="en-US">
-                    </div>
-                    <div class="col-auto">
-                        <p class="m-0">~</p>
-                    </div>
-                    <div class="col-4">
-                        <input type="date" class="form-control" lang="en-US">
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <button class="btn btn-primary" type="button">Search</button>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-12 text-start">
-                <div class="col-2">
-                    <button class="btn btn-primary" type="button">Add</button>
-                </div>
-            </div>
-        </div>
+
         <div class="row mt-2">
-            <div class="col-12">
+            <div class="col-7">
                 <table class="table table-striped table-hover table-sticky">
-                    <colgroup></colgroup>
-                    <colgroup></colgroup>
                     <colgroup></colgroup>
                     <colgroup></colgroup>
                     <colgroup></colgroup>
@@ -60,39 +16,59 @@
                         <tr>
                             <th>mã</th>
                             <th>tên sản phẩm</th>
-                            <th>giá gốc</th>
-                            <th>số lượng</th>
                             <th>giá</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <i class="fas fa-trash-alt" style="font-size: 20px;"></i>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-edit" style="font-size: 20px;"></i>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        {% for item in datas %}
+                            <tr id="item_{{ item[0] }}">
+                                <td class="product-code">{{ item[0] }}</td>
+                                <td class="product-name">{{ item[1] }}</td>
+                                <td class="category-code hidden">{{ item[2] }}</td>
+                                <td class="product-price">{{ item[3] }}</td>
+                                <td>
+                                    <button class="btn btn-primary add-menu" type="button">Add</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="4" class="text-end">tổng tiền</td>
-                            <td colspan="2"></td>
-                        </tr>
-                    </tfoot>
                 </table>
+            </div>
+            <div class="col-5">
+                <div class="row" style="height: 650px;">
+                    <div class="col-12">
+                        <table class="table table-striped table-hover table-sticky">
+                            <colgroup></colgroup>
+                            <colgroup></colgroup>
+                            <colgroup></colgroup>
+                            <colgroup style="width: 100px;"></colgroup>
+                            <thead>
+                                <tr>
+                                    <th class="text-center">tên sản phẩm</th>
+                                    <th class="text-center">số lượng</th>
+                                    <th class="text-center">giá</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="add-oder">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 justify-content-center">
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button type="button" class="btn btn-primary btn-order">Đặt hàng</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/order.js') }}"></script>
 {% endblock %}

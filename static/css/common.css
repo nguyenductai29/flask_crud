@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0,0,0,.3);
+    background: rgba(0, 0, 0, .3);
     opacity: 0;
     pointer-events: none;
     transition: .25s ease-out;
@@ -28,4 +28,8 @@
     left: 45%;
     right: 45%;
     bottom: 45%
+}
+
+.hidden {
+    display: none;
 }
