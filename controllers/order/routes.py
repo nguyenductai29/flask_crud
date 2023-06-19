@@ -24,11 +24,8 @@ def process_data_order():
         data = request.json
         begin_transaction()
         for item in data:
-            print(item)
-
             product_name = item.get('product_name')
             category_code = item.get('category_code')
-
 
             sql = text("INSERT INTO tbl_order (product_name, category_code, order_date) VALUES (:product_name, :category_code, :order_date)")
             params = {

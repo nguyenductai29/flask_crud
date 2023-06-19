@@ -4,15 +4,15 @@ def select(query):
     result = db.session.execute(query)
     return result.fetchall()
 
-def select_fetchone(query):
-    result = db.session.execute(query)
+def select_fetchone(query, params=None):
+    result = db.session.execute(query, params)
     return result.fetchone()
 
 def insert(sql, params):
     db.session.execute(sql, params)
 
-def update():
-    db.session.commit()
+def update(sql, params):
+    db.session.execute(sql, params)
 
 def delete(model_instance):
     db.session.delete(model_instance)
@@ -26,3 +26,6 @@ def commit_transaction():
 
 def rollback_transaction():
     db.session.rollback()
+
+def close_transaction():
+    db.session.close()

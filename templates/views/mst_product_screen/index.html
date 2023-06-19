@@ -23,46 +23,68 @@
         </div>
     </div> -->
     <div class="row mt-3">
-        <div class="col-12 text-start">
-            <div class="col-2">
-                <button class="btn btn-primary" type="button">Add</button>
+        <div class="col-auto text-start">
+            <div class="col-auto">
+                <button class="btn btn-primary btn-add-new-row" type="button">Add</button>
             </div>
+        </div>
+        <div class="col-6 text-start">
+            <div class="col-auto">
+                <button class="btn btn-primary btn-save-new-item" type="button">Save New Item</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2 mb-2">
+        <div class="col-12">
+            <p class="msg text-success"></p>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-12">
             <table class="table table-striped table-hover table-sticky">
+                <!-- <colgroup></colgroup> -->
                 <colgroup></colgroup>
                 <colgroup></colgroup>
-                <colgroup></colgroup>
-                <colgroup style="width: 100px;"></colgroup>
+                <colgroup style="width: 200px;"></colgroup>
+                <colgroup style="width: 200px;"></colgroup>
                 <thead>
                     <tr>
-                        <th>Mã sản phẩm</th>
+                        <!-- <th>Mã sản phẩm</th> -->
                         <th>tên sản phẩm</th>
                         <th>loại sản phẩm</th>
                         <th>giá</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody> {% for item in table_data %}
-                    <tr id="item_{{ item[0] }}">
-                        <td class="product-code">{{ item[0] }}</td>
-                        <td class="product-name">{{ item[1] }}</td>
-                        <td class="category-code">{{ item[2] }}</td>
-                        <td class="product-price">{{ item[3] }}</td>
-                        <td>
-                            <div class="row">
-                                <div class="col-auto">
+                <tbody id="item-product">
+                    {% for item in table_data %}
+                        <tr id="item_{{ item[0] }}">
+                            <td class="product-code hidden"><input type="text" name="product-code" value="{{ item[0] }}"></td>
+                            <td class="product-name"><input type="text" name="product-name" value="{{ item[1] }}"></td>
+                            <td class="category-code"><input type="text" name="category-code" value="{{ item[2] }}"></td>
+                            <td class="product-price"><input type="text" name="product-price" value="{{ item[3] }}"></td>
+                            <td class="text-end">
+                                <input type="hidden" name="action" value="delete">
+                                <button class="btn btn-danger btn-del" type="button">
                                     <i class="fas fa-trash-alt" style="font-size: 20px;"></i>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-edit" style="font-size: 20px;"></i>
-                                </div>
-                            </div>
-                        </td>
-                    </tr> {% endfor %} </tbody>
+                                </button>
+                            </td>
+                            <td class="text-end">
+                                <input type="hidden" name="action" value="update">
+                                <button class="btn btn-success btn-update" type="button">
+                                    <i class="fas fa-save" style="font-size: 20px;"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/product.js') }}"></script>
 {% endblock %}

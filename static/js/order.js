@@ -108,9 +108,9 @@ $(function () {
         let data = []
         let tableRows = $('#add-oder').find('tr')
 
-        for (var i = 0; i < tableRows.length; i++) {
-            var row = tableRows[i];
-            var rowData = {
+        for (let i = 0; i < tableRows.length; i++) {
+            let row = tableRows[i];
+            let rowData = {
                 product_code: row.cells[0].innerText,
                 category_code: row.cells[1].innerText,
                 product_name: row.cells[2].innerText,
