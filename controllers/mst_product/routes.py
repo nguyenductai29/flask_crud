@@ -28,7 +28,7 @@ def add_new_item():
             category_code = item.get('category_code')
             price = item.get('price')
 
-            sql = text("SELECT MAX(product_code) FROM mst_tbl_product")
+            sql = text("SELECT COUNT(product_code) FROM mst_tbl_product")
             product_code = int(select_fetchone(sql)[0])
             print(product_code)
 
